@@ -129,7 +129,6 @@ uint64_t aoc::day5::part_2(const std::vector<std::string>& data) {
 	}
 
 	uint64_t min = UINT64_MAX;
-	int minLayer = 0; int minIndex = 0;
 	for (int layer = 0; layer < 7; ++layer) {
 		for (int i = 0; i < maps[layer].size(); ++i) {
 			uint64_t destination = maps[layer][i].destination;
@@ -138,11 +137,8 @@ uint64_t aoc::day5::part_2(const std::vector<std::string>& data) {
 			uint64_t location = layer==6? maps[layer][i].destination:find_location(maps[layer][i].destination, layer, maps);
 			if (location < min) {
 				min = location;
-				minLayer = layer;
-				minIndex = i;
 			}
 		}
 	}
-	std::cout << "Layer: " << minLayer << " Index: " << minIndex << std::endl;
 	return min;
 }
